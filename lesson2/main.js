@@ -1,6 +1,7 @@
 var budget = prompt('Ваш бюджет?');
 var storeName = prompt('Название вашего магазина');
 
+
 var mainList = {
 	cash: budget,
 	name: storeName,
@@ -9,10 +10,16 @@ var mainList = {
 	open: false
 };
 
-mainList.shopGoods[0] = prompt("Какой тип товаров будем продавать?");
-mainList.shopGoods[1] = prompt("Какой тип товаров будем продавать?");
-mainList.shopGoods[2] = prompt("Какой тип товаров будем продавать?");
+
+for (var i = 0; i < 5; i++) {
+
+		var a = prompt('Какой тип товаров будем продавать?');
+		
+		if((typeof(a)) === 'string' && (typeof(a)) === null && a !== '' && a.length < 50){
+			console.log('Все верно!');
+			mainList.shopGoods[i] = a;
+		}
+}
 
 alert("Ваш бюджет на один день составляет: " + budget/30);
 console.log(mainList);
-
