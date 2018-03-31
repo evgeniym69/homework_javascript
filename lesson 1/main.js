@@ -1,22 +1,19 @@
 var budget = prompt('Ваш бюджет?');
 var storeName = prompt('Название вашего магазина');
-var shopGoods = [''];
-var employers = {};
+
 
 var mainList = {
-	budget: budget,
+	cash: budget,
 	name: storeName,
-	shopGoods: shopGoods,
-	staff: employers,
-	open: ''
+	stuff: shopGoods[],
+	staff: employers{},
+	open: false
 };
 
 
-shopGoods[0] = prompt('Какой тип товаров будем продавать?');
-shopGoods[1] = prompt('Какой тип товаров будем продавать?');
-shopGoods[2] = prompt('Какой тип товаров будем продавать?');
-
-console.log(shopGoods);//Вывод записанных товаров в массив
+mainList.shopGoods[0] = prompt('Какой тип товаров будем продавать?');
+mainList.shopGoods[1] = prompt('Какой тип товаров будем продавать?');
+mainList.shopGoods[2] = prompt('Какой тип товаров будем продавать?');
 
 alert("Ваш бюджет на один день составляет: " + budget/30);
 
