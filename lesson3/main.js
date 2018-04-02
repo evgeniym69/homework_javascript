@@ -76,7 +76,7 @@ function discountPrice(){
 discountPrice();*/
 
 function employersHiring(){
-	for (var i = 0; i < 4; i++) {
+	for (var i = 1; i < 5; i++) {
 
 		var b = prompt('Введите имя Вашего сотрудника!');
 		
