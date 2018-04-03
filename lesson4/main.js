@@ -85,7 +85,7 @@ var mainList = {
 										mainList.shopItems.push(prompt("Вы точно указали все товары, которые необходимы?", ""));
 										mainList.shopItems.sort();
 										mainList.shopItems.forEach(function(item, i, arr){
-											alert("У нас вы можете купить: " + arr);
+											alert("У нас вы можете купить: " + (i + 1) + ":" + item);
 										})
 
 									} else{
