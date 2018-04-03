@@ -101,15 +101,38 @@ for(var key in mainList){
 };
 
 var openBtn = document.getElementById('open-btn'),
+
 	nameField = document.getElementsByClassName('name'),
 	nameValueField = document.getElementsByClassName('name-value'),
-	goodsItem = document.getElementsByClassName('goods-item'),
-	button = document.getElementsByTagName('button'),
+	budgetField = document.getElementsByClassName('budget'),
+	budgetValueField = document.getElementsByClassName('budget-value'),
+	goodsField = document.getElementsByClassName('goods'),
+	goodsValueField = document.getElementsByClassName('goods-value'),
+	itemsField = document.getElementsByClassName('items'),
+	itemsValueField = document.getElementsByClassName('items-value'),
+	employersField = document.getElementsByClassName('employers'),
+	employersValueField = document.getElementsByClassName('employers-value'),
+	discountField = document.getElementsByClassName('discount'),
+	discountValueField = document.getElementsByClassName('discount-value'),
+	isopenField = document.getElementsByClassName('isopen'),
+	isopenValueField = document.getElementsByClassName('isopen-value'),
+
+	goodsItemFirstInput = document.getElementsByClassName('goods-item')[0],
+	goodsItemSecondInput = document.getElementsByClassName('goods-item')[1],
+	goodsItemThirdInput = document.getElementsByClassName('goods-item')[2],
+	goodsItemFourthInput = document.getElementsByClassName('goods-item')[3],
+
+	buttonApprove = document.getElementsByTagName('button')[1],
+	buttonCount = document.getElementsByTagName('button')[2],
+	buttonHire = document.getElementsByTagName('button')[3],
+
 	chooseItem = document.querySelector('choose-item'),
 	timeValue = document.querySelector('time-value'),
 	countBudgetValue = document.querySelector('count-budget-value'),
-	hireEmployersItem = document.querySelectorAll('hire-employers-item');
 
+	hireEmployersItemFirstField = document.querySelectorAll('hire-employers-item')[0],
+	hireEmployersItemSecondField = document.querySelectorAll('hire-employers-item')[1],
+	hireEmployersItemThirdField = document.querySelectorAll('hire-employers-item')[2];
 
-
+console.log(buttonApprove);
 
