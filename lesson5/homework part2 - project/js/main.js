@@ -85,7 +85,7 @@ var mainList = {
 										mainList.shopItems.push(prompt("Вы точно указали все товары, которые необходимы?", ""));
 										mainList.shopItems.sort();
 										mainList.shopItems.forEach(function(item, i, arr){
-											alert("У нас вы можете купить: " + (i + 1) + ":" + item);
+											alert("У нас вы можете купить: " + (i + 1) + ": " + item);
 										})
 
 									} else{
@@ -117,10 +117,7 @@ var openBtn = document.getElementById('open-btn'),
 	isopenField = document.getElementsByClassName('isopen'),
 	isopenValueField = document.getElementsByClassName('isopen-value'),
 
-	goodsItemFirstInput = document.getElementsByClassName('goods-item')[0],
-	goodsItemSecondInput = document.getElementsByClassName('goods-item')[1],
-	goodsItemThirdInput = document.getElementsByClassName('goods-item')[2],
-	goodsItemFourthInput = document.getElementsByClassName('goods-item')[3],
+	goodsItemInput = document.querySelectorAll('goods-item'),
 
 	buttonApprove = document.getElementsByTagName('button')[1],
 	buttonCount = document.getElementsByTagName('button')[2],
@@ -130,9 +127,8 @@ var openBtn = document.getElementById('open-btn'),
 	timeValue = document.querySelector('time-value'),
 	countBudgetValue = document.querySelector('count-budget-value'),
 
-	hireEmployersItemFirstField = document.querySelectorAll('hire-employers-item')[0],
-	hireEmployersItemSecondField = document.querySelectorAll('hire-employers-item')[1],
-	hireEmployersItemThirdField = document.querySelectorAll('hire-employers-item')[2];
+	hireEmployersItemField = document.querySelectorAll('hire-employers-item');
 
-console.log(buttonApprove);
+
+console.log(goodsItemInput);
 
