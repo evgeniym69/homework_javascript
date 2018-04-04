@@ -86,7 +86,7 @@ var mainList = {
 										mainList.shopItems.sort();
 										mainList.shopItems.forEach(function(item, i, arr){
 											alert("У нас вы можете купить: " + (i + 1) + ": " + item);
-										})
+										});
 
 									} else{
 										i = i - 1;
@@ -98,24 +98,17 @@ var mainList = {
 
 for(var key in mainList){
 	console.log('Наш магазин включает в себя: ' + key + ' СО ЗНАЧЕНИЕМ: '+ mainList[key]);
-};
+}
 
 var openBtn = document.getElementById('open-btn'),
 
-	nameField = document.getElementsByClassName('name'),
-	nameValueField = document.getElementsByClassName('name-value'),
-	budgetField = document.getElementsByClassName('budget'),
-	budgetValueField = document.getElementsByClassName('budget-value'),
-	goodsField = document.getElementsByClassName('goods'),
-	goodsValueField = document.getElementsByClassName('goods-value'),
-	itemsField = document.getElementsByClassName('items'),
-	itemsValueField = document.getElementsByClassName('items-value'),
-	employersField = document.getElementsByClassName('employers'),
-	employersValueField = document.getElementsByClassName('employers-value'),
-	discountField = document.getElementsByClassName('discount'),
-	discountValueField = document.getElementsByClassName('discount-value'),
-	isopenField = document.getElementsByClassName('isopen'),
-	isopenValueField = document.getElementsByClassName('isopen-value'),
+	nameValueField = document.getElementsByClassName('name-value')[0],
+	budgetValueField = document.getElementsByClassName('budget-value')[0],
+	goodsValueField = document.getElementsByClassName('goods-value')[0],
+	itemsValueField = document.getElementsByClassName('items-value')[0],
+	employersValueField = document.getElementsByClassName('employers-value')[0],
+	discountValueField = document.getElementsByClassName('discount-value')[0],
+	isopenValueField = document.getElementsByClassName('isopen-value')[0],
 
 	goodsItemInput = document.querySelectorAll('goods-item'),
 
@@ -128,7 +121,6 @@ var openBtn = document.getElementById('open-btn'),
 	countBudgetValue = document.querySelector('count-budget-value'),
 
 	hireEmployersItemField = document.querySelectorAll('hire-employers-item');
-
 
 console.log(goodsItemInput);
 
