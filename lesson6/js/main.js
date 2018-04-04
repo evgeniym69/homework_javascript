@@ -53,66 +53,82 @@ buttonGoods.addEventListener('click', () => {
 
 });
 
-
 chooseItem.addEventListener('change', () => {
 	var items = chooseItem.value;
 
-	if(isNaN(items) && items != '') {
+	if(isNaN(items) || items != '') {
 		mainList.shopItems = items.split(', ');
 		mainList.shopItems.sort();
 
 		itemsValueField.textContent = mainList.shopItems;
-	} ;
+	};
 		
+});
+
+timeValue.addEventListener('change', () =>{
+	var time = timeValue.value;
+
+	if(time < 0) {
+		console.log('Такого не может быть!');
+		mainList.open = false;
+
+	} else if (time > 8 && time < 20){
+		console.log("Время работать!");
+		mainList.open = true;
+	}else if (time < 24){
+		console.log("Уже слишком поздно!");
+		mainList.open = false;
+	}
+		else {
+			console.log("В сутках только 24 часа!");
+			mainList.open = false;
+		};
+
+
+	if(mainList.open == true){
+		isopenValueField.style.backgroundColor = "green";
+	} else {
+		isopenValueField.style.backgroundColor = "red";	
+	}
+
+});
+
+buttonCountBudget.addEventListener('click', () => {
+	countBudgetValue.value = budget / 30;
+});
+
+buttonHireEmployers.addEventListener('click', () =>{
+
+		for (var i = 0; i < hireEmployersItemField.length; i++) {
+			var b = hireEmployersItemField[i].value;
+			if((typeof(b)) === 'string' && (typeof(b)) != null && b != '' && b.length < 40 && isNaN(b)){
+				console.log('Все верно!');
+				mainList.employers[i] = b;
+			} else{
+				alert("Введите имя сотрудника используя только буквы");
+				break;
+			}
+			employersValueField.textContent += mainList.employers[i] + ', ';
+	}
 });
 
 var mainList = {
 	cash: budget,
-	name: storeName,
 	shopGoods: [],
 	employers: {},
 	open: false,
 	discount: true,
 	shopItems: [],
-	workTime: function workTime(time){
-						if(time < 0) {
-							console.log('Такого не может быть!');
-						} else if (time > 8 && time < 20){
-							console.log("Время работать!");
-							mainList.open = true;
-						}else if (time < 24){
-							console.log("Уже слишком поздно!");
-						}
-							else {
-								console.log("В сутках только 24 часа!");
-							}
-				},
-	dayBudget: function dayBudget(){
-							alert('Ваш ежедневный бюджет ' + mainList.budget / 30);
-							},
+	
 	discountPrice: function discountPrice(){
 							if(mainList.discount == true){
 								price = price * 0.8;
 							}else{
 								alert('У вас отсутствует скидка!');	
 							}
-						}, 
-	employersHiring: 	function employersHiring(){
-								for (var i = 1; i < 5; i++) {
-									var b = prompt('Введите имя Вашего сотрудника!', '');
-									if((typeof(b)) === 'string' && (typeof(b)) != null && b != '' && b.length < 20 && isNaN(b)){
-										console.log('Все верно!');
-										mainList.employers[i] = b;
-									} else{
-										alert("Введите имя сотрудника используя только буквы");
-										i = i - 1;
-									}
-								}
-							},
-	chooseShopItems: function chooseShopItems(){
-									
-					
-}
+						}
+								
+	
 };
 /*
 for(var key in mainList){
