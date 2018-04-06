@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 //Timer
 
-	var deadline = '2018-04-08';
+	var deadline = '2018-03-08';
 
 	function getTimeRemaining(endtime){
 		var t = Date.parse(endtime) - Date.parse(new Date()),
@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', function(){
 					_seconds.innerHTML = _t.seconds;
 
 					if(_t.total <= 0){
-						clearInterval(timeInterval);
+						timer.innerHTML = "00 : 00 : 00";
 					}
 			};
 
