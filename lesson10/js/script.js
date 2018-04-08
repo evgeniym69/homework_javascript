@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		var more = document.querySelector('.more'),
 				overlay = document.querySelector('.overlay'),
 				close = document.querySelector('.popup-close'),
-				info = document.querySelector('.info');
+				infoBlock = document.querySelector('.info');
 
 		more.addEventListener('click', function(){
 				this.classList.add('more-splash');
@@ -93,7 +93,7 @@ window.addEventListener('DOMContentLoaded', function(){
 				document.body.style.overflow = 'visible';
 		});
 
-		info.addEventListener('click', function(event){
+		infoBlock.addEventListener('click', function(event){
 			if(event.target && event.target.className == 'description-btn'){
 				overlay.style.display = "block";
 			}
@@ -114,7 +114,7 @@ class options{
 		let div = document.createElement('div');
 		document.body.appendChild(div);
 		div.textContent = text;
-		div.style.cssText = `height: ${this.height}; width: ${this.width}; background-color: ${this.bg}; font-size: ${this.fontSize}; text-align: ${this.textAlign} `;
+		div.style.cssText = `height: ${this.height}; width: ${this.width}; background-color: ${this.bg}; font-size: ${this.fontSize}; text-align: ${this.textAlign}`;
 	}
 
 }
