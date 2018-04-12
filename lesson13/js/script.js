@@ -284,7 +284,7 @@ let form = document.getElementsByClassName('main-form')[0];
 	 	persons.addEventListener('change', function() {
 	 		personsSum = +this.value;
 	 		total = (restDaysSum + personsSum)*4000;
-	 		if (restDays.value == '' || restDays.value <= 0){
+	 		if (restDays.value == '' || restDays.value <= 0|| Math.ceil(restDays.value, -1)){
 	 			totalValue.innerHTML = 0;
 	 		} else{
 	 			totalValue.innerHTML = total;
@@ -294,7 +294,7 @@ let form = document.getElementsByClassName('main-form')[0];
  		restDays.addEventListener('change', function() {
  			restDaysSum = +this.value;
  			total = (restDaysSum + personsSum)*4000;
- 			if (persons.value == '' || persons.value <= 0 ){
+ 			if (persons.value == '' || persons.value <= 0 || Math.ceil(persons.value, -1)){
 	 			totalValue.innerHTML = 0;
 	 		} else{
 	 			totalValue.innerHTML = total;
@@ -302,7 +302,7 @@ let form = document.getElementsByClassName('main-form')[0];
 	 	});
 
 	 	place.addEventListener('change', function(){
-	 		if(restDays.value == '' || persons.value == '' || persons.value <= 0 || restDays.value <= 0){
+	 		if(restDays.value == '' || persons.value == '' || persons.value <= 0 || restDays.value <= 0 || Math.ceil(persons.value, -1) || Math.ceil(restDays.value, -1)){
 	 			totalValue.innerHTML = 0;
 	 		}else{
 	 			let a = total;
