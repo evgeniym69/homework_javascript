@@ -114,7 +114,6 @@ class options{
 		div.textContent = text;
 		div.style.cssText = `height: ${this.height}; width: ${this.width}; background-color: ${this.bg}; font-size: ${this.fontSize}; text-align: ${this.textAlign}`;
 	}
-
 }
 
 /*let test = new options('300px', '500px', 'yellow', '42px', 'center');
@@ -285,7 +284,7 @@ let form = document.getElementsByClassName('main-form')[0];
 	 	persons.addEventListener('change', function() {
 	 		personsSum = +this.value;
 	 		total = (restDaysSum + personsSum)*4000;
-	 		if (restDays.value == '' || restDays.value == 0){
+	 		if (restDays.value == '' || restDays.value <= 0){
 	 			totalValue.innerHTML = 0;
 	 		} else{
 	 			totalValue.innerHTML = total;
@@ -295,7 +294,7 @@ let form = document.getElementsByClassName('main-form')[0];
  		restDays.addEventListener('change', function() {
  			restDaysSum = +this.value;
  			total = (restDaysSum + personsSum)*4000;
- 			if (persons.value == '' || persons.value == 0){
+ 			if (persons.value == '' || persons.value <= 0 ){
 	 			totalValue.innerHTML = 0;
 	 		} else{
 	 			totalValue.innerHTML = total;
@@ -303,7 +302,7 @@ let form = document.getElementsByClassName('main-form')[0];
 	 	});
 
 	 	place.addEventListener('change', function(){
-	 		if(restDays.value == '' || persons.value == '' || persons.value == 0 || restDays.value == 0){
+	 		if(restDays.value == '' || persons.value == '' || persons.value <= 0 || restDays.value <= 0){
 	 			totalValue.innerHTML = 0;
 	 		}else{
 	 			let a = total;
