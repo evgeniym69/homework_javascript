@@ -282,33 +282,34 @@ let form = document.getElementsByClassName('main-form')[0];
 	 	totalValue.innerHTML = 0;
 
 	 	persons.addEventListener('change', function() {
+	 		this.value = Math.ceil(Math.abs(persons.value));
 	 		personsSum = +this.value;
 	 		total = (restDaysSum + personsSum)*4000;
-	 		if (restDays.value == '' || restDays.value <= 0|| Math.ceil(restDays.value, -1)){
+	 		if (persons.value <= 0 || restDays.value <= 0 ){
 	 			totalValue.innerHTML = 0;
-	 		} else{
+	 		} else {
 	 			totalValue.innerHTML = total;
 	 		}
 	 	});
 
  		restDays.addEventListener('change', function() {
+ 			this.value = Math.ceil(Math.abs(restDays.value));
  			restDaysSum = +this.value;
  			total = (restDaysSum + personsSum)*4000;
- 			if (persons.value == '' || persons.value <= 0 || Math.ceil(persons.value, -1)){
+ 			if (restDays.value <= 0 || persons.value <= 0){
 	 			totalValue.innerHTML = 0;
-	 		} else{
+	 		} else {
 	 			totalValue.innerHTML = total;
 	 		}
 	 	});
 
 	 	place.addEventListener('change', function(){
-	 		if(restDays.value == '' || persons.value == '' || persons.value <= 0 || restDays.value <= 0 || Math.ceil(persons.value, -1) || Math.ceil(restDays.value, -1)){
+	 		if(persons.value <= 0 || restDays.value <= 0) {
 	 			totalValue.innerHTML = 0;
-	 		}else{
+	 		} else {
 	 			let a = total;
 	 			totalValue.innerHTML = a * this.options[this.selectedIndex].value;
 	 		}
 	 	});
-
 
 });
