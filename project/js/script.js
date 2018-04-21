@@ -71,8 +71,39 @@ readyBtn.addEventListener('click', function(){
 		candidateViews.textContent = customViews;
 		bioCandidate.textContent = bioCustom;
 
-});
+//Обнуление и Голосование
+let voting = document.getElementById('voting'),
+		resultCount = document.querySelectorAll('.result-count'),
+		progressBar1 = document.querySelector('.progress-bar-1'),
+		progressBar2and3 = document.querySelectorAll('.progress-bar-2');
+		console.log(resultCount);
 
+//Обнуление
+		resultCount[0].innerHTML = 0 + '%';
+    resultCount[1].innerHTML = 0 + '%';
+   	resultCount[2].innerHTML = 0 + '%';
+    progressBar1.style.height = 0;
+    progressBar2and3[0].style.height = 0;
+    progressBar2and3[1].style.height = 0;
+
+//Голосование
+voting.addEventListener('click', function(){
+		let a = Math.ceil((Math.random()*100)/3) + '%';
+				b = Math.ceil((Math.random()*100)/3) + '%';
+				c = Math.ceil((Math.random()*100)/3) + '%';
+
+		    resultCount[0].innerHTML = a;
+		    resultCount[1].innerHTML = b;
+		   	resultCount[2].innerHTML = c;
+    if (event.target){
+        progressBar1.style.height = a;
+        progressBar2and3[0].style.height = b;
+        progressBar2and3[1].style.height = c;
+  	}
+
+ });
+
+});
 
 resetBtn.addEventListener('click', function(){
 	mainBlock.style.display = "none";
@@ -81,31 +112,6 @@ let divRemove = document.querySelectorAll('.main-cards-item')[2];
 	mainCardsBlock.removeChild(divRemove);
 
 });
-
-//Голосование
-let voting = document.getElementById('voting'),
-		resultCount = document.querySelectorAll('.result-count'),
-		progressBar1 = document.querySelector('.progress-bar-1'),
-		progressBar2and3 = document.querySelectorAll('.progress-bar-2');
-
-
-voting.addEventListener('click', function(){
-		let a = Math.ceil((Math.random()*100)/3) + '%';
-				b = Math.ceil((Math.random()*100)/3) + '%';
-				с = Math.ceil((Math.random()*100)/3) + '%';
-
-		    resultCount[0].innerHTML = a;
-		    resultCount[1].innerHTML = b;
-		   // resultCount[2].innerHTML = c;
-    if (event.target){
-        progressBar1.style.height = a;
-        progressBar2and3[0].style.height = b;
-       // progressBar[2].style.height = '70%';
-  }
-
- });
-
-
 
 
 //Slider
