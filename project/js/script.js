@@ -8,7 +8,9 @@ let createButton = document.getElementById('popup-btn'),
 		mainCardsBlock = document.querySelector('.main-cards'),
 		mainCardsItem = document.querySelectorAll('.main-cards-item')[1],
 		readyBtn = document.getElementById('ready'),
-		resetBtn = document.getElementById('reset');
+		resetBtn = document.getElementById('reset'),
+		crime = document.getElementById('crime');
+
 
 createButton.addEventListener('click', function(){
 	overlay.style.display = "none";
@@ -22,7 +24,6 @@ createButton.addEventListener('click', function(){
 	customStyle.classList.add('animated' , 'fadeInRight');
 });
 
-let candidateName = document.querySelector('.name');
 
 //Добавление блока с кандидатом
 readyBtn.addEventListener('click', function(){
@@ -33,7 +34,6 @@ readyBtn.addEventListener('click', function(){
 		customBlock.style.display = "none";
 		mainBlock.style.display = "block";
 		mainBlock.classList.add('animated' , 'fadeInDown');
-
 
 		nameCustom = document.getElementById('name').value;
 		nameCandidate = document.querySelectorAll('.name')[2];
@@ -50,6 +50,9 @@ readyBtn.addEventListener('click', function(){
 
 		bioCustom = document.getElementById('bio').value;
 		bioCandidate = document.querySelectorAll('.bio')[2];
+
+		photoCandidate = document.querySelectorAll('.photo-2')[1];
+
 
 		if(customViews.value == "Либеральные"){
 			customViews.value = "Либеральные";
@@ -71,78 +74,122 @@ readyBtn.addEventListener('click', function(){
 		candidateViews.textContent = customViews;
 		bioCandidate.textContent = bioCustom;
 
+		photoCandidate.style.background = arrWomen[slideIndex - 1] + 'no-repeat center center / 76%';
+
+		console.log(arrWomen[slideIndex - 1]);
+
+
 //Обнуление и Голосование
 let voting = document.getElementById('voting'),
 		resultCount = document.querySelectorAll('.result-count'),
 		progressBar1 = document.querySelector('.progress-bar-1'),
-		progressBar2and3 = document.querySelectorAll('.progress-bar-2');
-		console.log(resultCount);
+		progressBar2 = document.querySelectorAll('.progress-bar-2')[0];
+		progressBar3 = document.querySelectorAll('.progress-bar-2')[1];
 
 //Обнуление
 		resultCount[0].innerHTML = 0 + '%';
     resultCount[1].innerHTML = 0 + '%';
    	resultCount[2].innerHTML = 0 + '%';
     progressBar1.style.height = 0;
-    progressBar2and3[0].style.height = 0;
-    progressBar2and3[1].style.height = 0;
+    progressBar2.style.height = 0;
+    progressBar3.style.height = 0;
+
 
 //Голосование
 voting.addEventListener('click', function(){
-		let a = Math.ceil((Math.random()*100)/3) + '%';
-				b = Math.ceil((Math.random()*100)/3) + '%';
-				c = Math.ceil((Math.random()*100)/3) + '%';
+		let //a = Math.ceil((Math.random()*100)) + '%';
+				//b = Math.ceil((Math.random()*100)) + '%';
+				//c = Math.ceil((Math.random()*100)) + '%';
 
-		    resultCount[0].innerHTML = a;
-		    resultCount[1].innerHTML = b;
-		   	resultCount[2].innerHTML = c;
+		    a = randomInteger(0, 100) ;
+				b = randomInteger(0, 100) ;
+				c = randomInteger(0, 100) ;
+
+		function randomInteger(min, max) {
+		    var rand = min + Math.random() * (max + 1 - min);
+		    rand = Math.floor(rand);
+		    return rand;
+			}
+
+				mainCardsItemFirst = document.querySelectorAll('.main-cards-item')[0];
+				mainCardsItemSecond = document.querySelectorAll('.main-cards-item')[1];
+				mainCardsItemThird = document.querySelectorAll('.main-cards-item')[2];
+
+			
+				if(mainCardsItemFirst.classList.contains('main-cards-item-active')){
+						mainCardsItemFirst.classList.remove('main-cards-item-active');
+				}else if(mainCardsItemSecond.classList.contains('main-cards-item-active')){
+						mainCardsItemSecond.classList.remove('main-cards-item-active');
+				}else {
+						mainCardsItemThird.classList.remove('main-cards-item-active');
+				}
+
+						if (a > b && a > c){
+							mainCardsItemFirst.classList.add('main-cards-item-active');
+				  	}else if(b > a && b > c){
+							mainCardsItemSecond.classList.add('main-cards-item-active');
+				  	}else if (c > a && c > b){
+							mainCardsItemThird.classList.add('main-cards-item-active');
+				  	}
+
+		    resultCount[0].innerHTML = a + '%';
+		    resultCount[1].innerHTML = b + '%';
+		   	resultCount[2].innerHTML = c + '%';
+
     if (event.target){
-        progressBar1.style.height = a;
-        progressBar2and3[0].style.height = b;
-        progressBar2and3[1].style.height = c;
+        progressBar1.style.height = a + '%';
+        progressBar2.style.height = b + '%';
+        progressBar3.style.height = c + '%';
   	}
 
  });
 
+
 });
 
 resetBtn.addEventListener('click', function(){
-	mainBlock.style.display = "none";
-	customBlock.style.display = "flex";
-let divRemove = document.querySelectorAll('.main-cards-item')[2];
-	mainCardsBlock.removeChild(divRemove);
-
+	let divRemove = document.querySelectorAll('.main-cards-item')[2];
+		mainBlock.style.display = "none";
+		customBlock.style.display = "flex";
+		mainCardsBlock.removeChild(divRemove);
 });
 
 
 //Slider
-	let preview = document.querySelector('.preview'),
+let preview = document.querySelector('.preview'),
 		previewMain = document.querySelector('.person-easy'),
 		prev = document.querySelector('.prev'),
 		next = document.querySelector('.next'),
 		arrWomen = ["url('./img/construct-1.png')", 
-						"url('./img/construct-2.png')",
-						"url('./img/construct-3.png')",
-						"url('./img/construct-4.png')"],
+								"url('./img/construct-2.png')",
+								"url('./img/construct-3.png')",
+								"url('./img/construct-4.png')"],
 		arrMen = ["url('./img/construct-5.png')",
-					"url('./img/construct-6.png')",
-					"url('./img/construct-7.png')",
-					"url('./img/construct-8.png')"],
-		slideIndex = 1;
+								"url('./img/construct-6.png')",
+								"url('./img/construct-7.png')",
+								"url('./img/construct-8.png')"],
+		slideIndex = 0;
+
+		preview.style.backgroundImage = 'none';
+		previewMain.style.backgroundImage = 'none';
 
 function showBackgroundSlides(n) {
-      if (n > arrMen.length) {
+      if (n > arrWomen.length) {
         slideIndex = 1;
       };
       if (n < 1) {
-        slideIndex = arrMen.length;
+        slideIndex = arrWomen.length;
       };
-      preview.style.backgroundImage = arrMen[slideIndex - 1],
-      previewMain.style.backgroundImage = arrMen[slideIndex - 1]
+      preview.style.backgroundImage = arrWomen[slideIndex - 1],
+      previewMain.style.backgroundImage = arrWomen[slideIndex - 1];
 
-    }
-    function plusSlides (n) {
+      return arrWomen[slideIndex - 1];
+      }
+
+    function plusSlides(n) {
       showBackgroundSlides(slideIndex += n)
     }
+
     prev.addEventListener('click', function() {
       plusSlides(-1);
     });
@@ -150,3 +197,11 @@ function showBackgroundSlides(n) {
       plusSlides(1);
     });
 
+
+crime.addEventListener('click', function(){
+
+});
+
+
+
+			
