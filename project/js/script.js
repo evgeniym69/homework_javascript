@@ -22,7 +22,9 @@ let createButton = document.getElementById('popup-btn'),
 					"url('./img/construct-3.png')",
 					"url('./img/construct-4.png')"],
 		slideIndexMen = 1,
-		slideIndexWomen = 1;
+		slideIndexWomen = 1,
+		preview = document.querySelector('.preview'),
+		previewMain = document.querySelector('.person-easy');
 
 createButton.addEventListener('click', function(){
 	overlay.style.display = "none";
@@ -38,9 +40,7 @@ createButton.addEventListener('click', function(){
 	sexCustomMale.checked = false;//Удаляю атрибут checked у input radio
 
 //Slider
-let preview = document.querySelector('.preview'),
-	previewMain = document.querySelector('.person-easy'),
-	prev = document.querySelector('.prev'),
+let prev = document.querySelector('.prev'),
 	next = document.querySelector('.next');
 
 	preview.style.backgroundImage = arrMen[0];
@@ -59,9 +59,7 @@ sexCustomMale.addEventListener('click', function(){
 	      for(let i = 0; i < arrMen.length; i++){
 	      	preview.style.backgroundImage = arrMen[slideIndexMen - 1],
 	     	previewMain.style.backgroundImage = arrMen[slideIndexMen - 1];
-
 	      }
-	      
 	      return arrMen[slideIndexMen - 1];
 	      }
 
@@ -76,7 +74,6 @@ sexCustomMale.addEventListener('click', function(){
 	    next.addEventListener('click', function() {
 	      plusSlides(1);
 	    });
-
 
 });
 
@@ -112,11 +109,18 @@ sexCustomFemale.addEventListener('click', function(){
 });
 
 
-
-
 //Добавление блока с кандидатом
 readyBtn.addEventListener('click', function(){
-let div = mainCardsItem.cloneNode(true);//Создаю "глубокую" копию уже имеющегося блока с кандидатом.
+
+let nameCustom = document.getElementById('name');
+		ageCustom = document.getElementById('age');
+		customViews = document.getElementById('select');
+		bioCustom = document.getElementById('bio'); 
+
+		if(nameCustom.value == '' && ageCustom.value == ''){
+			alert('Введите Имя, Возраст и выберите пол кандидата!');
+		}else{
+		div = mainCardsItem.cloneNode(true);//Создаю "глубокую" копию уже имеющегося блока с кандидатом.
 		mainCardsBlock.appendChild(div);
 		div.classList.add('main-cards-item', 'animated' , 'fadeInRight');
 
@@ -124,21 +128,15 @@ let div = mainCardsItem.cloneNode(true);//Создаю "глубокую" коп
 		mainBlock.style.display = "block";
 		mainBlock.classList.add('animated' , 'fadeInDown');
 
-		nameCustom = document.getElementById('name');
 		nameCandidate = document.querySelectorAll('.name')[2];
-
-		ageCustom = document.getElementById('age');
 		ageCandidate = document.querySelectorAll('.age')[2];
-
 		sexCandidate = document.querySelectorAll('.sex')[2];
-
-		customViews = document.getElementById('select').value;
 		candidateViews = document.querySelectorAll('.views')[2];
-
-		bioCustom = document.getElementById('bio').value;
 		bioCandidate = document.querySelectorAll('.bio')[2];
-
 		photoCandidate = document.querySelectorAll('.photo-2')[1];
+
+		
+
 
 
 		if(nameCustom.value == '' || typeof(nameCustom.value) === null || typeof(nameCustom.value) === "nubmer" || nameCustom.value.length > 30){
@@ -151,8 +149,6 @@ let div = mainCardsItem.cloneNode(true);//Создаю "глубокую" коп
 			nameCandidate.textContent = nameCustom.value;
 			};
 
-
-
 		if (ageCustom.value < 35 || ageCustom.value > 65 || ageCustom.value == '' || typeof(ageCustom.value) === null || ageCustom.value.length > 3 || ageCustom.value.length <= 1) {
 			ageCustom.style.cssText = 'border: 1px solid red;';
 			ageCustom.value = "";
@@ -163,8 +159,6 @@ let div = mainCardsItem.cloneNode(true);//Создаю "глубокую" коп
 			ageCandidate.textContent = ageCustom.value + " лет";
 			};
 
-
-	
 		if(customViews.value == "Либеральные"){
 			customViews.value = "Либеральные";
 		}else if (customViews.value = "Левые"){
@@ -181,8 +175,8 @@ let div = mainCardsItem.cloneNode(true);//Создаю "глубокую" коп
 		};
 		
 
-		candidateViews.textContent = customViews;
-		bioCandidate.textContent = bioCustom;
+		candidateViews.textContent = customViews.value;
+		bioCandidate.textContent = bioCustom.value;
 
 		if (sexCustomMale.checked){
 			photoCandidate.style.background = arrMen[slideIndexMen - 1] + 'no-repeat center center / 90%';
@@ -206,7 +200,8 @@ let voting = document.getElementById('voting'),
 		totalPercents = 101,
 		crime = false,
 		min = 0,
-		winnerIndex = 0;
+		winnerIndex = 0,
+		a = 23, b = 57, c = 20;
 
 //Обнуление
 	resultCount[0].innerHTML = 0 + '%';
@@ -220,9 +215,10 @@ let voting = document.getElementById('voting'),
 
 //Голосование
 voting.addEventListener('click', function(){
-	let a = Math.floor((Math.random()*100));
+
+	/*a = Math.floor((Math.random()*100));
 		b = Math.floor((Math.random()*100));
-		c = Math.floor((Math.random()*100));
+		c = Math.floor((Math.random()*100));*/
 
 
 //Удаление класса active у блоков
@@ -256,18 +252,18 @@ if (a > b && a > c){
 let crimeBtn = document.getElementById('crime');
 
 crimeBtn.addEventListener('click', function(){
-	
-	c += 25;
+	a -= 3;//20
+	b -= 22;
+	c += 25;//Добавляем к 20ти процентам ещё 25
 
-	resultCount[2].innerHTML = c + '%';
-    progressBar3.style.height = c + '%';
+ 			resultCount[0].innerHTML = 20 + '%';
+	 		resultCount[1].innerHTML = 35 + '%';
+			resultCount[2].innerHTML = 45 + '%';
 
+     progressBar1.style.height = 20 + '%';
+     progressBar2.style.height = 35 + '%';
+     progressBar3.style.height = 45 + '%';
 
-  	if(c > 100){
-  		resultCount[2].innerHTML = 100 + '%';
-        progressBar3.style.height = 100 + '%';
-        alert('Ваш кандидат победил!');
-  	}
 
 	 if(mainCardsItemFirst.classList.contains('main-cards-item-active')){
 			mainCardsItemFirst.classList.remove('main-cards-item-active');
@@ -278,9 +274,8 @@ crimeBtn.addEventListener('click', function(){
 	}
 });
 
-
+}
 });//Закрытие реди адд ивент листенер
-
 
 
 resetBtn.addEventListener('click', function(){
@@ -288,6 +283,20 @@ resetBtn.addEventListener('click', function(){
 		mainBlock.style.display = "none";
 		customBlock.style.display = "flex";
 		mainCardsBlock.removeChild(divRemove);
+
+		nameCustom.value = '';
+		ageCustom.value = '';
+		if (sexCustomMale.checked){
+    		sexCustomMale.checked = false;
+		} else{
+   		 	sexCustomFemale.checked = false;
+		};
+		customViews = 'Либеральные';
+		bioCustom.value = '';
+
+		preview.style.backgroundImage = arrMen[0];
+		previewMain.style.backgroundImage = arrMen[0];
+
 });
 
 
