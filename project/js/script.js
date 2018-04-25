@@ -47,7 +47,7 @@ let prev = document.querySelector('.prev'),
 	previewMain.style.backgroundImage = arrMen[0];
 
 
-sexCustomMale.addEventListener('click', function(){
+sexCustomMale.onclick = function(){
 	preview.style.backgroundImage = showBackgroundSlides();
 	previewMain.style.backgroundImage = showBackgroundSlides();
 
@@ -75,9 +75,9 @@ sexCustomMale.addEventListener('click', function(){
 	      plusSlides(1);
 	    });
 
-});
+};
 
-sexCustomFemale.addEventListener('click', function(){
+sexCustomFemale.onclick = function(){
 	preview.style.backgroundImage = showBackgroundSlides();
 	previewMain.style.backgroundImage = showBackgroundSlides();
 
@@ -103,7 +103,7 @@ sexCustomFemale.addEventListener('click', function(){
       plusSlides(1);
     });
 
-});
+};
 
 
 });
