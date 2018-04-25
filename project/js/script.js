@@ -1,3 +1,5 @@
+window.addEventListener('DOMContentLoaded', function () {
+
 let createButton = document.getElementById('popup-btn'),
 		overlay = document.querySelector('.overlay'),
 		customBlock = document.querySelector('.custom'),
@@ -19,7 +21,8 @@ let createButton = document.getElementById('popup-btn'),
 					"url('./img/construct-2.png')",
 					"url('./img/construct-3.png')",
 					"url('./img/construct-4.png')"],
-		slideIndex = 1;
+		slideIndexMen = 1,
+		slideIndexWomen = 1;
 
 createButton.addEventListener('click', function(){
 	overlay.style.display = "none";
@@ -40,8 +43,8 @@ let preview = document.querySelector('.preview'),
 	prev = document.querySelector('.prev'),
 	next = document.querySelector('.next');
 
-	preview.style.backgroundImage = 'none';
-	previewMain.style.backgroundImage = 'none';
+	preview.style.backgroundImage = arrMen[0];
+	previewMain.style.backgroundImage = arrMen[0];
 
 
 sexCustomMale.addEventListener('click', function(){
@@ -50,21 +53,20 @@ sexCustomMale.addEventListener('click', function(){
 
 
 	function showBackgroundSlides(n) {
-			
-	      if (n > arrMen.length) {
-	        slideIndex = 1;
-	      };
-	      if (n < 1) {
-	        slideIndex = arrMen.length;
-	      };
-	      preview.style.backgroundImage = arrMen[slideIndex - 1],
-	      previewMain.style.backgroundImage = arrMen[slideIndex - 1];
+	      if (n > arrMen.length) { slideIndexMen = 1; };
+	      if (n < 1) {slideIndexMen = arrMen.length;};
 
-	      return arrMen[slideIndex - 1];
+	      for(let i = 0; i < arrMen.length; i++){
+	      	preview.style.backgroundImage = arrMen[slideIndexMen - 1],
+	     	previewMain.style.backgroundImage = arrMen[slideIndexMen - 1];
+
+	      }
+	      
+	      return arrMen[slideIndexMen - 1];
 	      }
 
 	    function plusSlides(n) {
-	      showBackgroundSlides(slideIndex += n)
+	      showBackgroundSlides(slideIndexMen += n)
 	    }
 
 	    prev.addEventListener('click', function() {
@@ -75,7 +77,6 @@ sexCustomMale.addEventListener('click', function(){
 	      plusSlides(1);
 	    });
 
-	    console.log(slideIndex);
 
 });
 
@@ -85,20 +86,16 @@ sexCustomFemale.addEventListener('click', function(){
 
 
 	function showBackgroundSlides(n) {
-      if (n > arrWomen.length) {
-        slideIndex = 1;
-      };
-      if (n < 1) {
-        slideIndex = arrWomen.length;
-      };
-      preview.style.backgroundImage = arrWomen[slideIndex - 1],
-      previewMain.style.backgroundImage = arrWomen[slideIndex - 1];
+      if (n > arrWomen.length) { slideIndexWomen = 1;};
+      if (n < 1) { slideIndexWomen = arrWomen.length;};
+      preview.style.backgroundImage = arrWomen[slideIndexWomen - 1],
+      previewMain.style.backgroundImage = arrWomen[slideIndexWomen - 1];
 
-      return arrWomen[slideIndex - 1];
+      return arrWomen[slideIndexWomen - 1];
       }
 
     function plusSlides(n) {
-      showBackgroundSlides(slideIndex += n)
+      showBackgroundSlides(slideIndexWomen += n)
     }
 
     prev.addEventListener('click', function() {
@@ -115,6 +112,8 @@ sexCustomFemale.addEventListener('click', function(){
 });
 
 
+
+
 //Добавление блока с кандидатом
 readyBtn.addEventListener('click', function(){
 let div = mainCardsItem.cloneNode(true);//Создаю "глубокую" копию уже имеющегося блока с кандидатом.
@@ -125,14 +124,13 @@ let div = mainCardsItem.cloneNode(true);//Создаю "глубокую" коп
 		mainBlock.style.display = "block";
 		mainBlock.classList.add('animated' , 'fadeInDown');
 
-		nameCustom = document.getElementById('name').value;
+		nameCustom = document.getElementById('name');
 		nameCandidate = document.querySelectorAll('.name')[2];
 
-		ageCustom = document.getElementById('age').value;
+		ageCustom = document.getElementById('age');
 		ageCandidate = document.querySelectorAll('.age')[2];
 
 		sexCandidate = document.querySelectorAll('.sex')[2];
-
 
 		customViews = document.getElementById('select').value;
 		candidateViews = document.querySelectorAll('.views')[2];
@@ -143,6 +141,30 @@ let div = mainCardsItem.cloneNode(true);//Создаю "глубокую" коп
 		photoCandidate = document.querySelectorAll('.photo-2')[1];
 
 
+		if(nameCustom.value == '' || typeof(nameCustom.value) === null || typeof(nameCustom.value) === "nubmer" || nameCustom.value.length > 30){
+			nameCustom.style.cssText = 'border: 1px solid red;';
+			nameCustom.value = "";
+			nameCustom.placeholder = "ФИО используя буквы";
+			nameCandidate.textContent = "Неверное имя";
+			}
+			else{
+			nameCandidate.textContent = nameCustom.value;
+			};
+
+
+
+		if (ageCustom.value < 35 || ageCustom.value > 65 || ageCustom.value == '' || typeof(ageCustom.value) === null || ageCustom.value.length > 3 || ageCustom.value.length <= 1) {
+			ageCustom.style.cssText = 'border: 1px solid red;';
+			ageCustom.value = "";
+			ageCustom.placeholder = "Возраст в цифрах от 35 до 65 лет";
+			ageCandidate.textContent = "Вы ввели неправильный возраст";
+			}
+			else{
+			ageCandidate.textContent = ageCustom.value + " лет";
+			};
+
+
+	
 		if(customViews.value == "Либеральные"){
 			customViews.value = "Либеральные";
 		}else if (customViews.value = "Левые"){
@@ -157,18 +179,16 @@ let div = mainCardsItem.cloneNode(true);//Создаю "глубокую" коп
 		} else if(sexCustomFemale.checked){
    		 	sexCandidate.innerHTML = sexCustomFemale.value;
 		};
+		
 
-
-		nameCandidate.textContent = nameCustom;
-		ageCandidate.textContent = ageCustom;
 		candidateViews.textContent = customViews;
 		bioCandidate.textContent = bioCustom;
 
 		if (sexCustomMale.checked){
-			photoCandidate.style.background = arrMen[slideIndex - 1] + 'no-repeat center center / 90%';
+			photoCandidate.style.background = arrMen[slideIndexMen - 1] + 'no-repeat center center / 90%';
 		}
 		else{
-			photoCandidate.style.background = arrWomen[slideIndex - 1] + 'no-repeat center center / 76%';
+			photoCandidate.style.background = arrWomen[slideIndexWomen - 1] + 'no-repeat center center / 76%';
 		};
 
 
@@ -271,7 +291,7 @@ resetBtn.addEventListener('click', function(){
 });
 
 
-
+});//DOMContentLoaded
 
 
 
