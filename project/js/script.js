@@ -47,42 +47,37 @@ let prev = document.querySelector('.prev'),
 	previewMain.style.backgroundImage = arrMen[0];
 
 
-sexCustomMale.onclick = function(){
-	preview.style.backgroundImage = showBackgroundSlides();
-	previewMain.style.backgroundImage = showBackgroundSlides();
+sexCustomMale.onclick = plusSlidesMen(slideIndexMen);
 
-
-	function showBackgroundSlides(n) {
+function showBackgroundSlidesMen(n) {
 	      if (n > arrMen.length) { slideIndexMen = 1; };
 	      if (n < 1) {slideIndexMen = arrMen.length;};
 
 	      for(let i = 0; i < arrMen.length; i++){
-	      	preview.style.backgroundImage = arrMen[slideIndexMen - 1],
+	      preview.style.backgroundImage = arrMen[slideIndexMen - 1],
 	     	previewMain.style.backgroundImage = arrMen[slideIndexMen - 1];
 	      }
 	      return arrMen[slideIndexMen - 1];
 	      }
 
-	    function plusSlides(n) {
-	      showBackgroundSlides(slideIndexMen += n)
+	    function plusSlidesMen(n) {
+	      showBackgroundSlidesMen(slideIndexMen += n);
 	    }
 
 	    prev.addEventListener('click', function() {
-	      plusSlides(-1);
+	      plusSlidesMen(-1);
 	    });
 
 	    next.addEventListener('click', function() {
-	      plusSlides(1);
+	      plusSlidesMen(1);
 	    });
 
-};
 
-sexCustomFemale.onclick = function(){
-	preview.style.backgroundImage = showBackgroundSlides();
-	previewMain.style.backgroundImage = showBackgroundSlides();
+sexCustomFemale.onclick = plusSlidesWomen(slideIndexWomen);
+	
 
 
-	function showBackgroundSlides(n) {
+	function showBackgroundSlidesWomen(n) {
       if (n > arrWomen.length) { slideIndexWomen = 1;};
       if (n < 1) { slideIndexWomen = arrWomen.length;};
       preview.style.backgroundImage = arrWomen[slideIndexWomen - 1],
@@ -91,20 +86,17 @@ sexCustomFemale.onclick = function(){
       return arrWomen[slideIndexWomen - 1];
       }
 
-    function plusSlides(n) {
-      showBackgroundSlides(slideIndexWomen += n)
+    function plusSlidesWomen(n) {
+      showBackgroundSlidesWomen(slideIndexWomen += n);
     }
 
     prev.addEventListener('click', function() {
-      plusSlides(-1);
+      plusSlidesWomen(-1);
     });
 
     next.addEventListener('click', function() {
-      plusSlides(1);
+      plusSlidesWomen(1);
     });
-
-};
-
 
 });
 
