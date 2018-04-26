@@ -176,7 +176,7 @@ next.addEventListener('click', function() {
 //Добавление блока с кандидатом
 readyBtn.addEventListener('click', function(){
 
-		if(nameCustom.value == '' && ageCustom.value == ''){
+		if(nameCustom.value == '' || ageCustom.value == ''){
 			alert('Введите Имя, Возраст и выберите пол кандидата!');
 		}else{
 		div = mainCardsItem.cloneNode(true);//Создаю "глубокую" копию уже имеющегося блока с кандидатом.
@@ -193,9 +193,6 @@ readyBtn.addEventListener('click', function(){
 		candidateViews = document.querySelectorAll('.views')[2];
 		bioCandidate = document.querySelectorAll('.bio')[2];
 		photoCandidate = document.querySelectorAll('.photo-2')[1];
-
-
-
 
 
 
@@ -313,17 +310,17 @@ if (a > b && a > c){
 let crimeBtn = document.getElementById('crime');
 
 crimeBtn.addEventListener('click', function(){
-	a -= 3;//20
-	b -= 22;
-	c += 25;//Добавляем к 20ти процентам ещё 25
+	a = 20;
+	b = 35;
+	c = 45;
 
- 			resultCount[0].innerHTML = 20 + '%';
-	 		resultCount[1].innerHTML = 35 + '%';
-			resultCount[2].innerHTML = 45 + '%';
+ 			resultCount[0].innerHTML = a + '%';
+	 		resultCount[1].innerHTML = b + '%';
+			resultCount[2].innerHTML = c + '%';
 
-     progressBar1.style.height = 20 + '%';
-     progressBar2.style.height = 35 + '%';
-     progressBar3.style.height = 45 + '%';
+     progressBar1.style.height = a + '%';
+     progressBar2.style.height = b + '%';
+     progressBar3.style.height = c + '%';
 
 
 	 if(mainCardsItemFirst.classList.contains('main-cards-item-active')){
@@ -333,6 +330,14 @@ crimeBtn.addEventListener('click', function(){
 	}else {
 			mainCardsItemThird.classList.remove('main-cards-item-active');
 	}
+
+	if (a > b && a > c){
+	mainCardsItemFirst.classList.add('main-cards-item-active');
+	}else if(b > a && b > c){
+	mainCardsItemSecond.classList.add('main-cards-item-active');
+	}else if (c > a && c > b){
+	mainCardsItemThird.classList.add('main-cards-item-active');
+}
 });
 
 }
