@@ -22,9 +22,12 @@ let createButton = document.getElementById('popup-btn'),
 					"url('./img/construct-3.png')",
 					"url('./img/construct-4.png')"],
 		slideIndex = 1,
-		//slideIndexWomen = 1,
 		preview = document.querySelector('.preview'),
-		previewMain = document.querySelector('.person-easy');
+		previewMain = document.querySelector('.person-easy'),
+		nameCustom = document.getElementById('name'),
+		ageCustom = document.getElementById('age'),
+		customViews = document.getElementById('select'),
+		bioCustom = document.getElementById('bio'); 
 
 createButton.addEventListener('click', function(){
 	overlay.style.display = "none";
@@ -172,11 +175,6 @@ next.addEventListener('click', function() {
 
 //Добавление блока с кандидатом
 readyBtn.addEventListener('click', function(){
-
-let nameCustom = document.getElementById('name'),
-		ageCustom = document.getElementById('age'),
-		customViews = document.getElementById('select'),
-		bioCustom = document.getElementById('bio'); 
 
 		if(nameCustom.value == '' && ageCustom.value == ''){
 			alert('Введите Имя, Возраст и выберите пол кандидата!');
